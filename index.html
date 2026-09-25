@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Учебная песочница для анализа рисков генеративного ИИ">
+  <title>AI Risk Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Курс · Специалист по информационным системам</div>
+      <h1>AI Risk Lab</h1>
+      <p class="lead">Практическая песочница для анализа рисков генеративного ИИ и разработки мероприятий по их снижению.</p>
+    </div>
+    <div class="hero-badge">Тема 6.3 · учебный стенд</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card intro">
+    <div class="intro-head">
+      <div>
+        <div class="tag">Как работать</div>
+        <h2>Не читаем кейс — тестируем цифровое решение</h2>
+      </div>
+      <div class="safe">Все данные синтетические</div>
+    </div>
+    <div class="steps">
+      <div><b>1</b><span>Запустите сценарий</span></div>
+      <div><b>2</b><span>Зафиксируйте наблюдение</span></div>
+      <div><b>3</b><span>Сформулируйте риск</span></div>
+      <div><b>4</b><span>Определите причину</span></div>
+      <div><b>5</b><span>Разработайте меру</span></div>
+      <div><b>6</b><span>Проверьте эффект</span></div>
+    </div>
+    <p class="note"><b>Важно:</b> стенд специально воспроизводит типичные ошибки. Он не подключён к реальной нейросети и не отправляет введённые данные на сервер.</p>
+  </section>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="case1">Кейс 1 · Обращения</button>
+    <button class="tab" data-tab="case2">Кейс 2 · Корпоративный ИИ</button>
+    <button class="tab" data-tab="case3">Кейс 3 · База знаний</button>
+    <button class="tab" data-tab="register">Рабочий реестр</button>
+  </nav>
+
+  <section class="panel active" id="case1">
+    <div class="grid2">
+      <article class="card">
+        <div class="tag">Кейс 1</div>
+        <h2>ИИ-помощник обработки обращений</h2>
+        <p class="process">Обращение → ИИ определяет тему → ищет информацию → готовит проект ответа → сотрудник проверяет → отправляет пользователю</p>
+        <label for="appealScenario">Выберите обращение</label>
+        <select id="appealScenario">
+          <option value="benefit">Льгота на оплату услуги</option>
+          <option value="deadline">Срок рассмотрения обращения</option>
+          <option value="address">Адрес подразделения</option>
+        </select>
+        <button class="primary" id="runAppeal">Сформировать проект ответа</button>
+      </article>
+
+      <article class="card">
+        <div class="result-head">
+          <h3>Проект ответа ИИ</h3>
+          <span class="status idle" id="appealStatus">не запускалось</span>
+        </div>
+        <div class="terminal empty" id="appealOutput">Выберите сценарий и запустите обработку.</div>
+        <div class="button-row">
+          <button class="secondary reveal" data-target="appealHint">Показать разбор</button>
+          <button class="secondary add-register" data-kind="appeals">Добавить в реестр</button>
+        </div>
+        <div class="analysis hidden" id="appealHint"></div>
+      </article>
+    </div>
+
+    <article class="card task">
+      <h3>Задание для 6.3.1</h3>
+      <ol>
+        <li>Где именно в цифровой цепочке проявился риск?</li>
+        <li>Отделите <b>причину</b>, <b>риск</b> и <b>последствие</b>.</li>
+        <li>Определите тип: технологический, операционный или связка обоих.</li>
+        <li>Можно ли оценить вероятность по этому тесту? Если нет — напишите «Недостаточно данных».</li>
+      </ol>
+    </article>
+  </section>
+
+  <section class="panel" id="case2">
+    <div class="grid2">
+      <article class="card">
+        <div class="tag">Кейс 2</div>
+        <h2>Корпоративный ИИ-помощник</h2>
+        <p>Сотрудник собирается передать материал во внешний ИИ-сервис для анализа.</p>
+        <label for="corpScenario">Что передаём?</label>
+        <select id="corpScenario">
+          <option value="public">Опубликованный пресс-релиз</option>
+          <option value="personal">ФИО, телефон и история покупок</option>
+          <option value="code">Фрагмент внутреннего исходного кода</option>
+          <option value="contract">Фрагмент внутреннего договора</option>
+        </select>
+        <button class="primary" id="runCorp">Передать в ИИ-сервис</button>
+      </article>
+
+      <article class="card">
+        <div class="result-head">
+          <h3>Результат действия</h3>
+          <span class="status idle" id="corpStatus">не запускалось</span>
+        </div>
+        <div class="terminal empty" id="corpOutput">Выберите материал и запустите сценарий.</div>
+        <div class="button-row">
+          <button class="secondary reveal" data-target="corpHint">Показать разбор</button>
+          <button class="secondary add-register" data-kind="corp">Добавить в реестр</button>
+        </div>
+        <div class="analysis hidden" id="corpHint"></div>
+      </article>
+    </div>
+
+    <article class="card task">
+      <h3>Задание для 6.3.1 → 6.3.2</h3>
+      <ol>
+        <li>Возник ли риск до того, как ИИ сформировал ответ?</li>
+        <li>В какой точке процесса нужно вмешаться?</li>
+        <li>Не делайте вывод «утечка произошла», если сценарий подтверждает только факт передачи.</li>
+        <li>Для 6.3.2 сформулируйте конкретную меру и способ проверки.</li>
+      </ol>
+    </article>
+  </section>
+
+  <section class="panel" id="case3">
+    <div class="grid2">
+      <article class="card">
+        <div class="tag">Кейс 3</div>
+        <h2>ИИ-консультант по базе знаний</h2>
+        <p>ИИ должен отвечать пользователю на основании учебной базы знаний.</p>
+        <div class="kb">
+          <div class="kb-title">Учебная база знаний</div>
+          <ul>
+            <li><b>Доставка:</b> 2–4 рабочих дня.</li>
+            <li><b>Возврат:</b> в течение 14 календарных дней.</li>
+            <li><b>Поддержка:</b> пн–пт, 09:00–18:00.</li>
+          </ul>
+        </div>
+        <label for="kbScenario">Вопрос пользователя</label>
+        <select id="kbScenario">
+          <option value="delivery">Сколько занимает доставка?</option>
+          <option value="weekend">Работает ли поддержка в субботу?</option>
+          <option value="warranty">Какая гарантия на товар?</option>
+          <option value="return">Можно ли вернуть товар через 20 дней?</option>
+        </select>
+        <button class="primary" id="runKb">Получить ответ ИИ</button>
+      </article>
+
+      <article class="card">
+        <div class="result-head">
+          <h3>Ответ ИИ-консультанта</h3>
+          <span class="status idle" id="kbStatus">не запускалось</span>
+        </div>
+        <div class="terminal empty" id="kbOutput">Выберите вопрос и запустите сценарий.</div>
+        <div class="button-row">
+          <button class="secondary reveal" data-target="kbHint">Показать разбор</button>
+          <button class="secondary add-register" data-kind="kb">Добавить в реестр</button>
+        </div>
+        <div class="analysis hidden" id="kbHint"></div>
+      </article>
+    </div>
+
+    <article class="card task">
+      <h3>Самостоятельная практика 6.3.2</h3>
+      <ol>
+        <li>Выберите наиболее значимый риск.</li>
+        <li>Определите причину и точку вмешательства.</li>
+        <li>Сформулируйте мероприятие по снижению риска.</li>
+        <li>Определите, каким тестом проверите эффективность.</li>
+      </ol>
+    </article>
+  </section>
+
+  <section class="panel" id="register">
+    <article class="card">
+      <div class="register-head">
+        <div>
+          <div class="tag">Рабочий артефакт студента</div>
+          <h2>Реестр рисков и мероприятий</h2>
+        </div>
+        <div class="button-row no-margin">
+          <button class="secondary" id="addRow">+ строка</button>
+          <button class="primary no-margin" id="exportCsv">Скачать CSV</button>
+          <button class="danger" id="clearRegister">Очистить</button>
+        </div>
+      </div>
+      <p><b>6.3.1:</b> заполните анализ риска. <b>6.3.2:</b> добавьте мероприятие и проверку эффективности.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Кейс</th>
+              <th>Риск</th>
+              <th>Тип</th>
+              <th>Причина</th>
+              <th>Последствия</th>
+              <th>Вероятность / НД</th>
+              <th>Основание</th>
+              <th>Мероприятие</th>
+              <th>Как проверим</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="riskBody"></tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="card task">
+      <h3>Чек-лист качества мероприятия</h3>
+      <div class="checks">
+        <label><input type="checkbox"> Понятно, что конкретно нужно сделать</label>
+        <label><input type="checkbox"> Мера связана с причиной риска</label>
+        <label><input type="checkbox"> Мера реалистична для заданного решения</label>
+        <label><input type="checkbox"> Эффективность можно проверить</label>
+      </div>
+    </article>
+  </section>
+
+  <section class="card teacher">
+    <details>
+      <summary>Методическая подсказка преподавателю</summary>
+      <p><b>6.3.1:</b> сначала студенты работают без кнопки «Показать разбор». После фиксации собственной гипотезы можно открыть разбор и сравнить.</p>
+      <p><b>6.3.2:</b> используйте уже обнаруженные риски как входные данные. Новый результат занятия — конкретное мероприятие + проверка эффективности.</p>
+      <p><b>Ограничение:</b> не вводить реальные персональные, коммерческие, служебные или иные чувствительные данные.</p>
+    </details>
+  </section>
+</main>
+
+<footer>AI Risk Lab · данные сохраняются только в браузере пользователя</footer>
+<script src="app.js"></script>
+</body>
+</html>
